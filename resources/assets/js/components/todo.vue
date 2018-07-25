@@ -9,20 +9,22 @@
 
 
                     <ul class="el-menu navbar__menu" placeholder="Select">
-                        <li class="el-menu-item" v-for="task in test" v-if="!task.completed">
-                            <input type="hidden">
-                            <transition name="fade" mode="out-in">
-                                <!-- ... кнопки ... -->
-                            <el-button class="but" v-if="!task.status" v-on:click="doneTask(task)" type="search" icon="el-icon"
-                                       circle></el-button>
-                            <el-button class="but" effect="dark" v-if="task.status" v-on:click="doneTask(task)" type="success"
-                                       icon="el-icon-check" circle></el-button>
-                            </transition>
-                            <el-button class="but destroy" type="danger" v-on:click="destroy(task.id)" icon="el-icon-delete" circle></el-button>
+                        <transition name="slide-fade">
+                            <li class="el-menu-item" v-for="task in test" v-if="!task.completed">
+                                <input type="hidden">
+                                <transition name="fade" mode="out-in">
+                                    <!-- ... кнопки ... -->
+                                <el-button class="but" v-if="!task.status" v-on:click="doneTask(task)" type="search" icon="el-icon"
+                                           circle></el-button>
+                                <el-button class="but" effect="dark" v-if="task.status" v-on:click="doneTask(task)" type="success"
+                                           icon="el-icon-check" circle></el-button>
+                                </transition>
+                                <el-button class="but destroy" type="danger" v-on:click="destroy(task.id)" icon="el-icon-delete" circle></el-button>
 
 
-                            {{task.name}}
-                        </li>
+                                {{task.name}}
+                            </li>
+                        </transition>
                     </ul>
                 </el-col>
 
@@ -96,6 +98,17 @@
 </script>
 
 <style>
+    .slide-fade-enter-active {
+        transition: all .3s ease;
+    }
+    .slide-fade-leave-active {
+        transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-enter, .slide-fade-leave-to
+        /* .slide-fade-leave-active до версии 2.1.8 */ {
+        transform: translateX(10px);
+        opacity: 0;
+    }
     .fade-enter-active, .fade-leave-active {
         transition: opacity .5s;
     }

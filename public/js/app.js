@@ -92070,7 +92070,7 @@ exports = module.exports = __webpack_require__(17)(false);
 
 
 // module
-exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    -webkit-transition: opacity .5s;\n    transition: opacity .5s;\n}\n.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {\n    opacity: 0;\n}\nli {\n    list-style: none;\n}\n.but{\n    position: relative;\n}\n.destroy{\n    float: right;\n    margin-right: 10px;\n    margin-top: 13px;\n}\n.but i{\n    top: 4px;\n    left: 0px;\n    position: absolute;\n}\n", ""]);
+exports.push([module.i, "\n.slide-fade-enter-active {\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n}\n.slide-fade-leave-active {\n    -webkit-transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter, .slide-fade-leave-to\n    /* .slide-fade-leave-active до версии 2.1.8 */ {\n    -webkit-transform: translateX(10px);\n            transform: translateX(10px);\n    opacity: 0;\n}\n.fade-enter-active, .fade-leave-active {\n    -webkit-transition: opacity .5s;\n    transition: opacity .5s;\n}\n.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {\n    opacity: 0;\n}\nli {\n    list-style: none;\n}\n.but{\n    position: relative;\n}\n.destroy{\n    float: right;\n    margin-right: 10px;\n    margin-top: 13px;\n}\n.but i{\n    top: 4px;\n    left: 0px;\n    position: absolute;\n}\n", ""]);
 
 // exports
 
@@ -92081,6 +92081,8 @@ exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    -webkit
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -92220,77 +92222,84 @@ var render = function() {
                       staticClass: "el-menu navbar__menu",
                       attrs: { placeholder: "Select" }
                     },
-                    _vm._l(_vm.test, function(task) {
-                      return !task.completed
-                        ? _c(
-                            "li",
-                            { staticClass: "el-menu-item" },
-                            [
-                              _c("input", { attrs: { type: "hidden" } }),
-                              _vm._v(" "),
-                              _c(
-                                "transition",
-                                { attrs: { name: "fade", mode: "out-in" } },
+                    [
+                      _c(
+                        "transition",
+                        { attrs: { name: "slide-fade" } },
+                        _vm._l(_vm.test, function(task) {
+                          return !task.completed
+                            ? _c(
+                                "li",
+                                { staticClass: "el-menu-item" },
                                 [
-                                  !task.status
-                                    ? _c("el-button", {
-                                        staticClass: "but",
-                                        attrs: {
-                                          type: "search",
-                                          icon: "el-icon",
-                                          circle: ""
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            _vm.doneTask(task)
-                                          }
-                                        }
-                                      })
-                                    : _vm._e(),
+                                  _c("input", { attrs: { type: "hidden" } }),
                                   _vm._v(" "),
-                                  task.status
-                                    ? _c("el-button", {
-                                        staticClass: "but",
-                                        attrs: {
-                                          effect: "dark",
-                                          type: "success",
-                                          icon: "el-icon-check",
-                                          circle: ""
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            _vm.doneTask(task)
-                                          }
-                                        }
-                                      })
-                                    : _vm._e()
+                                  _c(
+                                    "transition",
+                                    { attrs: { name: "fade", mode: "out-in" } },
+                                    [
+                                      !task.status
+                                        ? _c("el-button", {
+                                            staticClass: "but",
+                                            attrs: {
+                                              type: "search",
+                                              icon: "el-icon",
+                                              circle: ""
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.doneTask(task)
+                                              }
+                                            }
+                                          })
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      task.status
+                                        ? _c("el-button", {
+                                            staticClass: "but",
+                                            attrs: {
+                                              effect: "dark",
+                                              type: "success",
+                                              icon: "el-icon-check",
+                                              circle: ""
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.doneTask(task)
+                                              }
+                                            }
+                                          })
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("el-button", {
+                                    staticClass: "but destroy",
+                                    attrs: {
+                                      type: "danger",
+                                      icon: "el-icon-delete",
+                                      circle: ""
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.destroy(task.id)
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(
+                                    "\n\n\n                            " +
+                                      _vm._s(task.name) +
+                                      "\n                        "
+                                  )
                                 ],
                                 1
-                              ),
-                              _vm._v(" "),
-                              _c("el-button", {
-                                staticClass: "but destroy",
-                                attrs: {
-                                  type: "danger",
-                                  icon: "el-icon-delete",
-                                  circle: ""
-                                },
-                                on: {
-                                  click: function($event) {
-                                    _vm.destroy(task.id)
-                                  }
-                                }
-                              }),
-                              _vm._v(
-                                "\n\n\n                        " +
-                                  _vm._s(task.name) +
-                                  "\n                    "
                               )
-                            ],
-                            1
-                          )
-                        : _vm._e()
-                    })
+                            : _vm._e()
+                        })
+                      )
+                    ],
+                    1
                   )
                 ],
                 1
