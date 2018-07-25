@@ -9,8 +9,8 @@
 
 
                     <ul class="el-menu navbar__menu" placeholder="Select">
-                        <transition name="slide-fade">
-                            <li class="el-menu-item" v-for="task in test" v-if="!task.completed">
+                        <transition-group name="slide-fade">
+                            <li class="el-menu-item" v-for="(task, index) in test" :key="index" v-if="!task.completed">
                                 <input type="hidden">
                                 <transition name="fade" mode="out-in">
                                     <!-- ... кнопки ... -->
@@ -24,7 +24,7 @@
 
                                 {{task.name}}
                             </li>
-                        </transition>
+                        </transition-group>
                     </ul>
                 </el-col>
 

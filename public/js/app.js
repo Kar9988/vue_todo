@@ -92224,13 +92224,13 @@ var render = function() {
                     },
                     [
                       _c(
-                        "transition",
+                        "transition-group",
                         { attrs: { name: "slide-fade" } },
-                        _vm._l(_vm.test, function(task) {
+                        _vm._l(_vm.test, function(task, index) {
                           return !task.completed
                             ? _c(
                                 "li",
-                                { staticClass: "el-menu-item" },
+                                { key: index, staticClass: "el-menu-item" },
                                 [
                                   _c("input", { attrs: { type: "hidden" } }),
                                   _vm._v(" "),
